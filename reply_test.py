@@ -1,7 +1,7 @@
 import requests as req
 import time
 
-ATTEMPTS = 15
+ATTEMPTS = 2
 
 # ClassApp connection credentials
 URL = "http://localhost:2000/graphql"
@@ -80,15 +80,19 @@ def reply_message_to_be_answered(file, request_id, message_id):
     )
 
     file.write("Reply request " + str(request_id) + ": " + str(res.status_code) + "\n")
+    print("Reply request " + str(request_id) + ": " + str(res.status_code) + "\n")
     if res.status_code != 200:
         file.write(res.text + "\n")
+        print(res.text + "\n")
 
 
 def replies_from_classapp_to_zendesk():
     f = open("replies_from_classapp_to_zendesk.txt", "w")
     for i in range(ATTEMPTS):
+        # Create message from the channel connected user
         answerable_message_id = create_message_to_be_answered(i + 1)
         time.sleep(1)
+        # Reply the message
         reply_message_to_be_answered(f, i + 1, answerable_message_id)
         time.sleep(1)
 

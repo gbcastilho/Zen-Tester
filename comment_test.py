@@ -72,7 +72,7 @@ def create_message_to_zendesk_integrated(file, request_id):
 def comment_message_from_zendesk_ticket(zenpy_client: Zenpy):
     tickets = zenpy_client.search("Ticket Message #", type="ticket")
     for ticket in tickets:
-        print(ticket.to_dict())
+        print(str(ticket.to_dict()))
 
 
 def create_comments_from_zendesk_to_classapp(zenpy_client):

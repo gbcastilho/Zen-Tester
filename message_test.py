@@ -1,7 +1,7 @@
 import requests as req
 import time
 
-ATTEMPTS = 10
+ATTEMPTS = 2
 
 # ClassApp connection credentials
 URL = "http://localhost:2000/graphql"
@@ -56,8 +56,10 @@ def create_message_to_zendesk_integrated(file, request_id):
     file.write(
         "Message request " + str(request_id) + ": " + str(res.status_code) + "\n"
     )
+    print("Message request " + str(request_id) + ": " + str(res.status_code) + "\n")
     if res.status_code != 200:
         file.write(res.text + "\n")
+        print(res.text + "\n")
 
 
 def create_messages_from_classapp_to_zendesk():
