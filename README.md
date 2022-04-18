@@ -23,3 +23,5 @@ To test the stress methods run the following commands:
 1. Message to the Zendesk connected user: `python3 message_test.p`
 2. Reply a message from the Zendesk connected user: `python3 reply_test.py`
 3. Comment on a message to Zendesk connected user via Zendesk: `python3 comment_test.py`
+
+        Set the ATTEMPTS variable to configure the amount of requests to be tried
